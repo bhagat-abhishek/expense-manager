@@ -35,6 +35,12 @@ const onSubmit = () => {
         return;
     }
 
+    // check if the amount value is nan or not a number
+    if (isNaN(+amount.value)) {
+        toast.error('Please enter a valid amount');
+        return;
+    }
+
     // Emitting the event
     emit('transactionSubmitted', {
         text: text.value,
