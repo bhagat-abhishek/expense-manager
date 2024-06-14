@@ -21,6 +21,9 @@ import { useToast } from "vue-toastification";
 // Get toast interface
 const toast = useToast();
 
+// Emits
+const emit = defineEmits(['transactionSubmitted'])
+
 const text = ref('')
 const amount = ref('')
 
@@ -32,12 +35,15 @@ const onSubmit = () => {
         return;
     }
 
-    console.log(text.value, amount.value)
+    // Emitting the event
+    emit('transactionSubmitted', {
+        text: text.value,
+        amount: +amount.value
+    })
 
     // clearing the values
     text.value = ''
     amount.value = ''
 }
-
 
 </script>
