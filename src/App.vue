@@ -5,7 +5,7 @@
 
     <Balance :total="+total" />
     <IncomeExpenses :income="+income" :expenses="+expenses" />
-    <TransactionList :transactions="transactions" />
+    <TransactionList :transactions="transactions" @transactionDeleted="handleTransactionDeleted" />
     <AddTransaction @transactionSubmitted="handleTransactionSubmitted" />
 
   </div>
@@ -71,6 +71,12 @@ const handleTransactionSubmitted = (transaction) => {
 // generate unique id for each transaction
 const generateId = () => {
   return Math.floor(Math.random() * 1000000);
+};
+
+// Deleting transcation
+const handleTransactionDeleted = (id) => {
+  transactions.value = transactions.value.filter((transaction) => transaction.id !== id);
+  toast.error('Transaction deleted successfully');
 };
 
 </script>
