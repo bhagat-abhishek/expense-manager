@@ -61,7 +61,7 @@ const handleTransactionSubmitted = (transaction) => {
 
   // Add to transactions
   transactions.value.push({
-    id: generateId,
+    id: generateId(),
     text: transaction.text,
     amount: transaction.amount,
   });
